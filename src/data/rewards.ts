@@ -42,4 +42,28 @@ export const rewards: Reward[] = [
     condition: '王様を5回召喚',
     image: 'assets/ai/reward-king-spotlight.webp',
   },
+  {
+    id: 'vip-tension',
+    title: 'VIP TENSION',
+    condition: 'VIBE 90達成',
+    image: 'assets/ai/reward-vip-tension.webp',
+  },
+  {
+    id: 'eye-lock',
+    title: 'EYE LOCK',
+    condition: '目を見て系カードを引く',
+    image: 'assets/ai/reward-eye-lock.webp',
+  },
+  {
+    id: 'neon-kabedon',
+    title: 'NEON KABEDON',
+    condition: 'ドキドキLEGENDを引く',
+    image: 'assets/ai/reward-neon-kabedon.webp',
+  },
+  {
+    id: 'photobooth-secret',
+    title: 'PHOTOBOOTH SECRET',
+    condition: 'リアクションを8回選ぶ',
+    image: 'assets/ai/reward-photobooth-secret.webp',
+  },
 ];

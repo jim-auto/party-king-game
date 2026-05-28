@@ -27,6 +27,7 @@ function App() {
   const [round, setRound] = useState(restored?.round ?? 0);
   const [vibe, setVibe] = useState(restored?.vibe ?? 50);
   const [kingSummons, setKingSummons] = useState(restored?.kingSummons ?? 0);
+  const [reactions, setReactions] = useState(restored?.reactions ?? 0);
   const [unlockedRewardIds, setUnlockedRewardIds] = useState<string[]>(restored?.unlockedRewardIds ?? []);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [rewardFlashId, setRewardFlashId] = useState<string | null>(null);
@@ -45,8 +46,8 @@ function App() {
   const isLateNight = new Date().getHours() >= 2 && new Date().getHours() < 5;
 
   useEffect(() => {
-    saveGame({ players, selectedCategories, chaos, drunk, sfx, round, vibe, kingSummons, unlockedRewardIds, recentCommandIds });
-  }, [players, selectedCategories, chaos, drunk, sfx, round, vibe, kingSummons, unlockedRewardIds, recentCommandIds]);
+    saveGame({ players, selectedCategories, chaos, drunk, sfx, round, vibe, kingSummons, reactions, unlockedRewardIds, recentCommandIds });
+  }, [players, selectedCategories, chaos, drunk, sfx, round, vibe, kingSummons, reactions, unlockedRewardIds, recentCommandIds]);
 
   const unlockReward = (id: string) => {
     setUnlockedRewardIds((current) => {
@@ -104,6 +105,8 @@ function App() {
     setHistory((current) => [`R${round + 1}: ${nextKing.name}が王様 / ${nextCard.title}`, ...current].slice(0, 6));
     if (nextCard.rarity === 'LEGEND') unlockReward('chaos-finale');
     if (nextCard.category === 'ドキドキ' && nextCard.rarity === 'SSR') unlockReward('dokidoki-route');
+    if (nextCard.category === 'ドキドキ' && nextCard.rarity === 'LEGEND') unlockReward('neon-kabedon');
+    if (nextCard.id.includes('eye') || nextCard.id.includes('look') || nextCard.id.includes('stare')) unlockReward('eye-lock');
     if (round + 1 >= 10) unlockReward('midnight-ending');
     if (kingSummons + 1 >= 5) unlockReward('king-spotlight');
   };
@@ -115,9 +118,12 @@ function App() {
     playSfx(kind === 'play' ? 'ssr' : 'tap', sfx);
     vibrate(kind === 'play' ? [18, 20, 44] : 12);
     setVibe((value) => Math.max(0, Math.min(100, value + delta)));
+    setReactions((value) => value + 1);
     setHistory((current) => [`${label}: ${card.title}`, ...current].slice(0, 6));
     if (kind === 'pass') unlockReward('friendship-afterglow');
     if (vibe + delta >= 80) unlockReward('vibe-clear');
+    if (vibe + delta >= 90) unlockReward('vip-tension');
+    if (reactions + 1 >= 8) unlockReward('photobooth-secret');
   };
 
   const rarityClass = card?.rarity === 'LEGEND' ? 'legend-card' : card?.rarity === 'SSR' ? 'ssr-card' : 'normal-card';

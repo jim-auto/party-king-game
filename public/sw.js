@@ -12,6 +12,10 @@ const ASSETS = [
   './assets/ai/reward-friendship-afterglow.webp',
   './assets/ai/reward-midnight-ending.webp',
   './assets/ai/reward-king-spotlight.webp',
+  './assets/ai/reward-vip-tension.webp',
+  './assets/ai/reward-eye-lock.webp',
+  './assets/ai/reward-neon-kabedon.webp',
+  './assets/ai/reward-photobooth-secret.webp',
   './assets/ai/effects-sticker-sheet.png',
 ];
 

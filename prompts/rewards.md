@@ -16,6 +16,14 @@ Use these for unlockable reward CGs in the king game experience simulator. Keep 
 
 6. `SSR solo spotlight reward CG, futuristic neon stage with floating cards and crown spotlight, confident young adult virtual host holding a glowing king card toward the viewer, playful smile, cyber Y2K outfit, premium Japanese mobile game card CG, vertical 9:16, hot pink cyan violet gold SSR sparkle, no text, no logo`
 
+7. `Spicy but safe VIP afterparty reward CG, adult virtual cast seated close to the viewer avatar in a neon lounge, intense eye contact, playful teasing smiles, elegant cyber Y2K fashion, no kissing, no nudity, glossy Japanese social game event CG, vertical 9:16, magenta cyan violet gold`
+
+8. `Close eye-contact challenge reward CG, adult virtual cast member leaning close toward the viewer for a 3-second stare, confident teasing smile, neon rooftop, Tokyo skyline, holographic hearts, premium mobile game CG, safe romantic tension, no nudity, no kissing`
+
+9. `Kabedon-inspired neon reward CG, adult virtual cast member playfully blocking the viewer's path with one hand on a glowing wall, respectful distance, confident smile, cyber club hallway, dramatic romantic route unlock, no coercive expression, no nudity, no sexual act`
+
+10. `Secret after-hours photo booth reward CG, two adult virtual cast members leaning into a selfie frame with the viewer avatar, playful wink, close shoulders, stylish covered fashion, neon Y2K photobooth, cheeky but safe, no nudity, no sexual content`
+
 ## Negative Prompt Ideas
 
-`nudity, sexual act, minors, coercive pose, alcohol branding, readable text, logo, watermark, horror, violence, low resolution, dull colors`
+`nudity, sexual act, minors, coercive pose, non-consensual mood, underwear focus, alcohol branding, readable text, logo, watermark, horror, violence, low resolution, dull colors`

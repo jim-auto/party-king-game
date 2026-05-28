@@ -13,6 +13,7 @@ export type SavedGame = {
   round?: number;
   vibe?: number;
   kingSummons?: number;
+  reactions?: number;
   unlockedRewardIds?: string[];
   selectedCategories: CommandCategory[];
   recentCommandIds?: string[];
