@@ -44,6 +44,8 @@ https://jim-auto.github.io/party-king-game/
 - `public/assets/ai/command-card-sheet.png`
 - `public/assets/ai/effects-sticker-sheet.png`
 
+アプリ上では軽量化したWebP版を優先して参照しています。PNGは元素材として残しています。
+
 追加・差し替え用のプロンプトは`prompts/`に用途別で整理しています。
 
 - `prompts/backgrounds.md`
@@ -108,6 +110,12 @@ npm run screenshots
 
 ```bash
 npm run build
+```
+
+AI生成素材を差し替えた場合は、WebP版を再生成します。
+
+```bash
+npm run optimize:assets
 ```
 
 `dist/`がGitHub Pagesで配信する静的ファイルです。`vite.config.ts`で`base: './'`にしているため、`https://user.github.io/party-king-game/`のようなサブパスでも動作します。

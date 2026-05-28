@@ -3,9 +3,9 @@ const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/ai/neon-party-bg.png',
-  './assets/ai/party-king-host.png',
-  './assets/ai/command-card-sheet.png',
+  './assets/ai/neon-party-bg.webp',
+  './assets/ai/party-king-host.webp',
+  './assets/ai/command-card-sheet.webp',
   './assets/ai/effects-sticker-sheet.png',
 ];
 

@@ -88,7 +88,7 @@ function App() {
 
   return (
     <main className={`min-h-dvh overflow-hidden bg-[#090613] text-white ${drunk ? 'drunk-mode' : ''}`}>
-      <img className="fixed inset-0 h-full w-full object-cover opacity-70" src={asset('assets/ai/neon-party-bg.png')} alt="" />
+      <img className="fixed inset-0 h-full w-full object-cover opacity-70" src={asset('assets/ai/neon-party-bg.webp')} alt="" />
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,58,214,.24),transparent_30%),linear-gradient(180deg,rgba(9,6,19,.36),#090613_86%)]" />
       <div className="party-lights" />
       <div className="relative mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-4 pb-[calc(18px+env(safe-area-inset-bottom))] pt-[calc(14px+env(safe-area-inset-top))]">
@@ -244,7 +244,7 @@ function App() {
                 )}
               </AnimatePresence>
               <div className="absolute right-[-42px] top-8 h-48 w-36 overflow-hidden rounded-[8px] opacity-90">
-                <img className="h-full w-full object-cover object-top" src={asset('assets/ai/party-king-host.png')} alt="" />
+                <img className="h-full w-full object-cover object-top" src={asset('assets/ai/party-king-host.webp')} alt="" />
               </div>
               <div className="relative z-10">
                 <p className="text-xs font-black tracking-[.22em] text-lime-200">TAP TO SUMMON THE KING</p>
@@ -263,7 +263,7 @@ function App() {
                   transition={{ type: 'spring', stiffness: 210, damping: 18, mass: 0.8 }}
                 >
                   <div className="card-art">
-                    <img src={asset('assets/ai/command-card-sheet.png')} alt="" />
+                    <img src={asset('assets/ai/command-card-sheet.webp')} alt="" />
                   </div>
                   <div className="flex items-start justify-between gap-3">
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-black">{card?.rarity ?? 'READY'}</span>
