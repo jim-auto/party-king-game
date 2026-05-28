@@ -6,7 +6,7 @@ Use these prompts for Stable Diffusion, Midjourney, GPT Image, or other image mo
 
 1. `Vertical 9:16 mobile game background, neon Tokyo after-party lounge at 2AM, glowing cocktail glasses, LED strips, mirror ball reflections, soft silhouettes of friends laughing, cyber party atmosphere, magenta cyan violet neon, glossy anime game key visual, center area readable for UI, no text, no logo, no watermark`
 
-2. `A stylish Japanese home drinking party transformed into a cyber club, low table with snacks and colorful mocktails, LED fairy lights, Y2K stickers, night city outside the window, playful late-night variety show mood, high detail 3D anime hybrid, vertical wallpaper, no readable text`
+2. `A stylish virtual king game room transformed into a cyber club, low table with snacks and colorful mocktails, LED fairy lights, Y2K stickers, night city outside the window, playful late-night variety show mood, high detail 3D anime hybrid, vertical wallpaper, no readable text`
 
 3. `Underground neon club VIP booth, empty seats waiting for players, glass reflections, confetti in the air, pink and blue laser beams, social media party game aesthetic, cinematic depth of field, vertical 9:16, no text, safe for TikTok`
 

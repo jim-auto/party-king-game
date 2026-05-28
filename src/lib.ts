@@ -10,6 +10,8 @@ export type SavedGame = {
   chaos: boolean;
   drunk: boolean;
   sfx: boolean;
+  round?: number;
+  vibe?: number;
   selectedCategories: CommandCategory[];
   recentCommandIds?: string[];
 };
@@ -54,4 +56,9 @@ export function loadGame(): SavedGame | null {
   } catch {
     return null;
   }
+}
+
+export function normalizeCategories(value: unknown): CommandCategory[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((category): category is CommandCategory => commands.some((command) => command.category === category));
 }

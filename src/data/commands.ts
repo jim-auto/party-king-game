@@ -1,4 +1,4 @@
-export type CommandCategory = 'ライト' | '盛り上げ' | '恋愛' | 'ドキドキ' | '飲酒' | '深夜テンション';
+export type CommandCategory = 'ライト' | '盛り上げ' | '恋愛' | 'ドキドキ' | '友情' | '深夜テンション';
 export type Rarity = 'N' | 'R' | 'SR' | 'SSR' | 'LEGEND';
 
 export type CommandCard = {
@@ -10,7 +10,7 @@ export type CommandCard = {
   tag: string;
 };
 
-export const categories: CommandCategory[] = ['ライト', '盛り上げ', '恋愛', 'ドキドキ', '飲酒', '深夜テンション'];
+export const categories: CommandCategory[] = ['ライト', '盛り上げ', '恋愛', 'ドキドキ', '友情', '深夜テンション'];
 
 export const commands: CommandCard[] = [
   { id: 'light-selfie', category: 'ライト', rarity: 'N', title: 'ネオン自撮り', body: '隣の人とツーショット。盛れる角度は王様が決める。', tag: 'SELFIE' },
@@ -18,7 +18,7 @@ export const commands: CommandCard[] = [
   { id: 'light-compliment', category: 'ライト', rarity: 'R', title: '10秒ほめラッシュ', body: '指定された人のいいところを10秒で3つ言う。', tag: 'GOOD VIBES' },
   { id: 'light-camera-roll', category: 'ライト', rarity: 'N', title: '最新フォト審査', body: '見せられる範囲で最新写真を1枚見せる。王様がタイトルをつける。', tag: 'PHOTO' },
   { id: 'light-emoji', category: 'ライト', rarity: 'N', title: '絵文字で自己紹介', body: '今の気分を絵文字3つで表現。理由もひとこと。', tag: 'EMOJI' },
-  { id: 'light-signature', category: 'ライト', rarity: 'N', title: '決めポーズ登録', body: '指定された人は今夜の決めポーズを作る。次の乾杯で全員まねする。', tag: 'POSE' },
+  { id: 'light-signature', category: 'ライト', rarity: 'N', title: '決めポーズ登録', body: '指定された人は今夜の決めポーズを作る。次のラウンドで全員まねする。', tag: 'POSE' },
   { id: 'light-best-smile', category: 'ライト', rarity: 'R', title: 'ベストスマイル', body: '王様が選んだ人は最高の笑顔を3秒キープ。周りは全力で盛る。', tag: 'SMILE' },
   { id: 'light-first-impression', category: 'ライト', rarity: 'R', title: '第一印象ライト', body: '指定された人の第一印象を、ポジティブ限定でひとこと。', tag: 'FIRST' },
   { id: 'light-theme-song', category: 'ライト', rarity: 'R', title: '登場曲セレクト', body: '指定された人に似合う登場曲を王様が選ぶ。歌っても流してもOK。', tag: 'BGM' },
@@ -29,14 +29,14 @@ export const commands: CommandCard[] = [
   { id: 'light-ssr-host', category: 'ライト', rarity: 'SSR', title: '司会者覚醒', body: '選ばれた人は次の1ターンだけ深夜番組のMC口調で進行する。', tag: 'MC' },
   { id: 'light-legend-screenshot', category: 'ライト', rarity: 'LEGEND', title: '伝説の集合ショット', body: '全員で今日いちばんSNSっぽい集合写真を撮る。載せるかは全員確認。', tag: 'LEGEND' },
 
-  { id: 'hype-toast', category: '盛り上げ', rarity: 'R', title: '乾杯コール職人', body: '一番テンション高い乾杯コールを作って全員で乾杯。', tag: 'CHEERS' },
+  { id: 'hype-toast', category: '盛り上げ', rarity: 'R', title: '開幕コール職人', body: '一番テンション高い開幕コールを作って全員でまねする。', tag: 'CALL' },
   { id: 'hype-dance', category: '盛り上げ', rarity: 'SR', title: '15秒MV', body: '王様が選んだ2人で15秒だけ無音MVを撮る。', tag: 'TIKTOK' },
   { id: 'hype-vote', category: '盛り上げ', rarity: 'R', title: 'モテそう王', body: 'この場で一番モテそうな人をせーので指差し。', tag: 'VOTE' },
   { id: 'hype-air-drop', category: '盛り上げ', rarity: 'N', title: 'エア差し入れ', body: '王様が誰かに架空の差し入れを渡す。受け取る側は全力リアクション。', tag: 'ACT' },
   { id: 'hype-copy', category: '盛り上げ', rarity: 'N', title: 'ものまね一口', body: '指定された人は誰かの口ぐせをやさしくものまね。悪口は禁止。', tag: 'COPY' },
   { id: 'hype-high-five', category: '盛り上げ', rarity: 'N', title: 'ハイタッチ連鎖', body: '王様から時計回りにハイタッチ。最後の人は一言コール。', tag: 'CHAIN' },
   { id: 'hype-ranking', category: '盛り上げ', rarity: 'R', title: '勝手にランキング', body: '「今日一番ノリがいい人」ランキングを全員で決める。', tag: 'RANK' },
-  { id: 'hype-commercial', category: '盛り上げ', rarity: 'R', title: '10秒CM', body: '指定された人は今飲んでいるものを10秒でCM風に紹介。', tag: 'CM' },
+  { id: 'hype-commercial', category: '盛り上げ', rarity: 'R', title: '10秒CM', body: '指定された人は自分の持ちキャラを10秒でCM風に紹介。', tag: 'CM' },
   { id: 'hype-silent-laugh', category: '盛り上げ', rarity: 'R', title: '無音爆笑チャレンジ', body: '選ばれた人は声を出さずに爆笑演技。周りがつられたら成功。', tag: 'MUTE' },
   { id: 'hype-call-response', category: '盛り上げ', rarity: 'R', title: 'コール&レスポンス', body: '王様が短いコールを作る。全員が同じ熱量で返す。', tag: 'CALL' },
   { id: 'hype-runway', category: '盛り上げ', rarity: 'SR', title: '深夜ランウェイ', body: '指定された人は3歩だけモデル歩き。王様がブランド名を即興で言う。', tag: 'RUNWAY' },
@@ -77,21 +77,21 @@ export const commands: CommandCard[] = [
   { id: 'thrill-ssr-slow-motion', category: 'ドキドキ', rarity: 'SSR', title: 'スローモーション登場', body: '選ばれた人は3秒だけ恋愛ドラマの登場シーンをする。周りは効果音担当。', tag: 'SSR' },
   { id: 'thrill-legend-neon-promise', category: 'ドキドキ', rarity: 'LEGEND', title: 'ネオンの約束', body: '王様と指定された人は「また遊ぶなら何する？」をそれぞれ答える。', tag: 'LEGEND' },
 
-  { id: 'drink-swap', category: '飲酒', rarity: 'R', title: 'ドリンク交換', body: '飲める範囲で一口ぶんだけドリンク交換。無理な人はパスOK。', tag: 'DRINK' },
-  { id: 'drink-water', category: '飲酒', rarity: 'N', title: '水も飲め', body: '王様の指定で誰か1人が水を飲む。えらい。', tag: 'SAFE' },
-  { id: 'drink-toast', category: '飲酒', rarity: 'SR', title: '王様乾杯', body: '王様が今日の名言を作って、全員で乾杯。', tag: 'KING' },
-  { id: 'drink-snack-pair', category: '飲酒', rarity: 'N', title: 'おつまみペアリング', body: '今のドリンクに合いそうなおつまみを王様が指定。なければ妄想でOK。', tag: 'SNACK' },
-  { id: 'drink-water-buddy', category: '飲酒', rarity: 'N', title: '水ペア乾杯', body: '王様が選んだ2人は水で乾杯。飲み会の治安を守る。', tag: 'WATER' },
-  { id: 'drink-flavor', category: '飲酒', rarity: 'N', title: '味レポ一言', body: '選ばれた人は今のドリンクをグルメ番組風に一言で紹介。', tag: 'REVIEW' },
-  { id: 'drink-next-order', category: '飲酒', rarity: 'R', title: '次頼むなら', body: '次に頼むなら何を飲むか発表。ノンアルでも水でもOK。', tag: 'ORDER' },
-  { id: 'drink-cheers-camera', category: '飲酒', rarity: 'R', title: '乾杯カメラ', body: 'グラスを中央に集めて乾杯ショット。飲む量は各自で調整。', tag: 'SHOT' },
-  { id: 'drink-bar-name', category: '飲酒', rarity: 'R', title: '今夜の店名', body: 'この場がバーなら名前は何？王様が採用案を決める。', tag: 'BAR' },
-  { id: 'drink-mocktail', category: '飲酒', rarity: 'R', title: '架空カクテル', body: '指定された人をイメージした架空カクテル名を全員で作る。', tag: 'MIX' },
-  { id: 'drink-sober-check', category: '飲酒', rarity: 'SR', title: '治安チェック', body: '全員で水かソフトドリンクを一口。ここで一回コンディション確認。', tag: 'SAFE' },
-  { id: 'drink-royal-toast', category: '飲酒', rarity: 'SR', title: 'ロイヤル乾杯', body: '王様は誰か1人の今日の良さを言ってから乾杯。', tag: 'ROYAL' },
-  { id: 'drink-menu-maker', category: '飲酒', rarity: 'SR', title: '限定メニュー開発', body: '今夜限定のドリンク名と説明を10秒で考える。', tag: 'MENU' },
-  { id: 'drink-ssr-champagne', category: '飲酒', rarity: 'SSR', title: 'SSRシャンパンコール', body: '実物は不要。全員で架空のシャンパンコールを5秒だけする。', tag: 'SSR' },
-  { id: 'drink-legend-aftercare', category: '飲酒', rarity: 'LEGEND', title: '伝説の休憩タイム', body: '全員で水分補給。王様は「今日の健康担当」として称えられる。', tag: 'LEGEND' },
+  { id: 'bond-swap', category: '友情', rarity: 'R', title: '役割チェンジ', body: '王様と相手は次のラウンドだけキャラ口調を交換する。', tag: 'SWAP' },
+  { id: 'bond-water', category: '友情', rarity: 'N', title: 'クールダウン', body: '全員で深呼吸。王様は場を整える一言を言う。', tag: 'SAFE' },
+  { id: 'bond-toast', category: '友情', rarity: 'SR', title: '王様宣言', body: '王様が今日の名言を作る。全員で同じポーズを決める。', tag: 'KING' },
+  { id: 'bond-snack-pair', category: '友情', rarity: 'N', title: '相性ペアリング', body: '王様は2人の意外と合いそうな共通点をひとつ作る。', tag: 'PAIR' },
+  { id: 'bond-water-buddy', category: '友情', rarity: 'N', title: 'セーフティバディ', body: '王様が選んだ2人は、このラウンドだけお互いをフォローする係。', tag: 'BUDDY' },
+  { id: 'bond-flavor', category: '友情', rarity: 'N', title: 'キャラ味レビュー', body: '選ばれた人は自分のキャラをグルメ番組風に一言で紹介。', tag: 'REVIEW' },
+  { id: 'bond-next-order', category: '友情', rarity: 'R', title: '次に話すなら', body: '次に深掘りしたい相手を1人選ぶ。理由は軽くひとこと。', tag: 'TALK' },
+  { id: 'bond-cheers-camera', category: '友情', rarity: 'R', title: 'チームショット', body: '全員で架空の集合写真ポーズ。王様がセンターを決める。', tag: 'SHOT' },
+  { id: 'bond-bar-name', category: '友情', rarity: 'R', title: '今夜のチーム名', body: 'このメンバーにチーム名をつける。王様が採用案を決める。', tag: 'TEAM' },
+  { id: 'bond-mocktail', category: '友情', rarity: 'R', title: '架空ユニット名', body: '指定された2人の架空ユニット名を全員で作る。', tag: 'UNIT' },
+  { id: 'bond-sober-check', category: '友情', rarity: 'SR', title: '空気チェック', body: '全員のテンションを1から5で発表。王様が次の方向性を決める。', tag: 'CHECK' },
+  { id: 'bond-royal-toast', category: '友情', rarity: 'SR', title: 'ロイヤル称賛', body: '王様は誰か1人の今日の良さを言って、全員で拍手する。', tag: 'ROYAL' },
+  { id: 'bond-menu-maker', category: '友情', rarity: 'SR', title: '限定ルール開発', body: '次の1ターンだけ使えるミニルールを10秒で考える。', tag: 'RULE' },
+  { id: 'bond-ssr-champagne', category: '友情', rarity: 'SSR', title: 'SSRスポットライト', body: '選ばれた人を5秒だけ主役扱い。全員で紹介コメントを添える。', tag: 'SSR' },
+  { id: 'bond-legend-aftercare', category: '友情', rarity: 'LEGEND', title: '伝説の休憩タイム', body: '全員で一度リセット。王様は「今日の安心担当」として称えられる。', tag: 'LEGEND' },
 
   { id: 'night-2am', category: '深夜テンション', rarity: 'SSR', title: '深夜2時モード', body: '全員、急に恋愛リアリティショーの住人として自己紹介。', tag: '2AM' },
   { id: 'night-chaos', category: '深夜テンション', rarity: 'LEGEND', title: 'カオスモード解放', body: '王様は「全員でできる変なポーズ」を指定。撮影してもいい。', tag: 'LEGEND' },
@@ -101,7 +101,7 @@ export const commands: CommandCard[] = [
   { id: 'night-dramatic-look', category: '深夜テンション', rarity: 'N', title: '意味深な目線', body: '選ばれた人は遠くを見て意味深な一言。内容は浅くてOK。', tag: 'MOOD' },
   { id: 'night-plot-twist', category: '深夜テンション', rarity: 'R', title: '急展開ナレーション', body: '王様は今の場に突然のナレーションを入れる。「しかしこの後...」から開始。', tag: 'PLOT' },
   { id: 'night-main-visual', category: '深夜テンション', rarity: 'R', title: 'メインビジュアル', body: '全員で存在しない番組ポスターのポーズを作る。撮影は自由。', tag: 'VISUAL' },
-  { id: 'night-random-title', category: '深夜テンション', rarity: 'R', title: '映画タイトル化', body: '今日の飲み会を映画タイトルにする。王様が主演を決める。', tag: 'MOVIE' },
+  { id: 'night-random-title', category: '深夜テンション', rarity: 'R', title: '映画タイトル化', body: '今の王様ゲームを映画タイトルにする。王様が主演を決める。', tag: 'MOVIE' },
   { id: 'night-villain', category: '深夜テンション', rarity: 'R', title: '黒幕登場', body: '指定された人は3秒だけ黒幕っぽく笑う。怖くしすぎない。', tag: 'BOSS' },
   { id: 'night-y2k-pose', category: '深夜テンション', rarity: 'SR', title: 'Y2Kポーズ縛り', body: '全員で平成ギャル・Y2Kっぽいポーズ。王様が一番を決める。', tag: 'Y2K' },
   { id: 'night-glitch-reset', category: '深夜テンション', rarity: 'SR', title: 'グリッチリセット', body: '全員3秒だけ動きがバグった人になる。王様の合図で通常復帰。', tag: 'GLITCH' },

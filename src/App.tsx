@@ -4,24 +4,27 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { Particles } from './components/Particles';
 import { categories, commands, type CommandCard, type CommandCategory } from './data/commands';
-import { createPlayer, drawCommand, loadGame, pickOne, saveGame, type Player } from './lib';
+import { createPlayer, drawCommand, loadGame, normalizeCategories, pickOne, saveGame, type Player } from './lib';
 import { playSfx, vibrate } from './sound';
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
 type Phase = 'setup' | 'ready' | 'reveal';
 
-const defaultPlayers = ['ヒカル', 'ミオ', 'レン', 'ユナ'].map(createPlayer);
+const defaultPlayers = ['あなた', 'ミオ', 'レン', 'ユナ', 'カイ'].map(createPlayer);
 const demoCardId = new URLSearchParams(window.location.search).get('card');
 const queryDemoCard = commands.find((command) => command.id === demoCardId) ?? null;
 
 function App() {
   const restored = useMemo(() => loadGame(), []);
+  const restoredCategories = normalizeCategories(restored?.selectedCategories);
   const [players, setPlayers] = useState<Player[]>(restored?.players.length ? restored.players : defaultPlayers);
-  const [selectedCategories, setSelectedCategories] = useState<CommandCategory[]>(restored?.selectedCategories ?? categories);
+  const [selectedCategories, setSelectedCategories] = useState<CommandCategory[]>(restoredCategories.length ? restoredCategories : categories);
   const [chaos, setChaos] = useState(restored?.chaos ?? false);
   const [drunk, setDrunk] = useState(restored?.drunk ?? false);
   const [sfx, setSfx] = useState(restored?.sfx ?? true);
+  const [round, setRound] = useState(restored?.round ?? 0);
+  const [vibe, setVibe] = useState(restored?.vibe ?? 50);
   const [phase, setPhase] = useState<Phase>(queryDemoCard ? 'reveal' : 'ready');
   const [king, setKing] = useState<Player | null>(queryDemoCard ? (restored?.players[0] ?? defaultPlayers[0]) : null);
   const [target, setTarget] = useState<Player | null>(queryDemoCard ? (restored?.players[1] ?? defaultPlayers[1]) : null);
@@ -37,8 +40,8 @@ function App() {
   const isLateNight = new Date().getHours() >= 2 && new Date().getHours() < 5;
 
   useEffect(() => {
-    saveGame({ players, selectedCategories, chaos, drunk, sfx, recentCommandIds });
-  }, [players, selectedCategories, chaos, drunk, sfx, recentCommandIds]);
+    saveGame({ players, selectedCategories, chaos, drunk, sfx, round, vibe, recentCommandIds });
+  }, [players, selectedCategories, chaos, drunk, sfx, round, vibe, recentCommandIds]);
 
   const updatePlayer = (id: string, name: string) => {
     setPlayers((current) => current.map((player) => (player.id === id ? { ...player, name } : player)));
@@ -79,9 +82,20 @@ function App() {
     setTarget(nextTarget);
     setCard(nextCard);
     setPhase('reveal');
+    setRound((value) => value + 1);
     setBurstKey((value) => value + 1);
     setRecentCommandIds((current) => [nextCard.id, ...current.filter((id) => id !== nextCard.id)].slice(0, 18));
-    setHistory((current) => [`${nextKing.name} 王様 / ${nextCard.title}`, ...current].slice(0, 5));
+    setHistory((current) => [`R${round + 1}: ${nextKing.name}が王様 / ${nextCard.title}`, ...current].slice(0, 6));
+  };
+
+  const reactToCommand = (kind: 'play' | 'arrange' | 'pass') => {
+    if (!card) return;
+    const delta = kind === 'play' ? 12 : kind === 'arrange' ? 7 : -2;
+    const label = kind === 'play' ? 'やってみた' : kind === 'arrange' ? 'アレンジ成功' : 'パスして空気を守った';
+    playSfx(kind === 'play' ? 'ssr' : 'tap', sfx);
+    vibrate(kind === 'play' ? [18, 20, 44] : 12);
+    setVibe((value) => Math.max(0, Math.min(100, value + delta)));
+    setHistory((current) => [`${label}: ${card.title}`, ...current].slice(0, 6));
   };
 
   const rarityClass = card?.rarity === 'LEGEND' ? 'legend-card' : card?.rarity === 'SSR' ? 'ssr-card' : 'normal-card';
@@ -105,7 +119,7 @@ function App() {
             <Users size={20} />
           </button>
           <div className="text-center">
-            <p className="text-[10px] font-black tracking-[.34em] text-cyan-200">NEON DRINKING GAME</p>
+            <p className="text-[10px] font-black tracking-[.34em] text-cyan-200">NEON KING EXPERIENCE</p>
             <h1 className="glitch-title text-4xl font-black leading-none" data-text="PARTY KING">
               PARTY KING
             </h1>
@@ -117,7 +131,7 @@ function App() {
               vibrate(12);
               setDrunk((value) => !value);
             }}
-            aria-label="酔っぱらい演出"
+            aria-label="グリッチ演出"
           >
             <GlassWater size={20} />
           </button>
@@ -125,8 +139,8 @@ function App() {
 
         <section className="mt-4 grid grid-cols-3 gap-2 text-center">
           <StatusPill icon={<Crown size={15} />} label="KING" value={king?.name ?? '未定'} />
-          <StatusPill icon={<Flame size={15} />} label="MODE" value={chaos ? 'CHAOS' : isLateNight ? '2AM' : 'PARTY'} />
-          <StatusPill icon={<History size={15} />} label="PLAYERS" value={`${activePlayers.length}人`} />
+          <StatusPill icon={<Flame size={15} />} label="VIBE" value={`${vibe}%`} />
+          <StatusPill icon={<History size={15} />} label="ROUND" value={`${round}`} />
         </section>
 
         <AnimatePresence mode="wait">
@@ -139,7 +153,7 @@ function App() {
               exit={{ opacity: 0, y: -16 }}
             >
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-black">メンバー入力</h2>
+                <h2 className="text-lg font-black">体験メンバー</h2>
                 <button className="mini-button" onClick={addPlayer}>
                   追加
                 </button>
@@ -193,7 +207,7 @@ function App() {
                     setDrunk((value) => !value);
                   }}
                   icon={<Sparkles size={17} />}
-                  label="酔っぱらい"
+                  label="グリッチ"
                 />
               </div>
               <Toggle
@@ -247,9 +261,9 @@ function App() {
                 <img className="h-full w-full object-cover object-top" src={asset('assets/ai/party-king-host.webp')} alt="" />
               </div>
               <div className="relative z-10">
-                <p className="text-xs font-black tracking-[.22em] text-lime-200">TAP TO SUMMON THE KING</p>
+                <p className="text-xs font-black tracking-[.22em] text-lime-200">KING GAME SIMULATOR</p>
                 <h2 className="mt-1 max-w-[290px] text-3xl font-black leading-tight">
-                  スマホを回して、王様を召喚。
+                  仮想メンバーと王様ゲームを体験。
                 </h2>
               </div>
 
@@ -271,7 +285,7 @@ function App() {
                   </div>
                   <h3 className="mt-3 text-3xl font-black leading-none">{card?.title ?? '王様待機中'}</h3>
                   <p className="mt-3 min-h-[72px] text-base font-bold leading-relaxed text-white/88">
-                    {card?.body ?? 'プレイヤーを2人以上入れて、ネオンの王様ゲームを始めよう。'}
+                  {card?.body ?? '仮想メンバーを2人以上入れて、ネオンの王様ゲームを体験しよう。'}
                   </p>
                   <div className="mt-4 grid grid-cols-2 gap-2">
                     <div className="mini-panel">
@@ -283,12 +297,25 @@ function App() {
                       <strong>{target?.name ?? '???'}</strong>
                     </div>
                   </div>
+                  {card && (
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      <button className="reaction-button" onClick={() => reactToCommand('play')}>
+                        やる
+                      </button>
+                      <button className="reaction-button" onClick={() => reactToCommand('arrange')}>
+                        アレンジ
+                      </button>
+                      <button className="reaction-button" onClick={() => reactToCommand('pass')}>
+                        パス
+                      </button>
+                    </div>
+                  )}
                 </motion.div>
               </div>
 
               <div className="relative z-10 space-y-3">
                 <button className="primary-button h-16 text-lg" disabled={!canPlay} onClick={roll}>
-                  <Dice5 size={22} /> 王様を決める
+                  <Dice5 size={22} /> {round === 0 ? '体験スタート' : '次の王様へ'}
                 </button>
                 <div className="flex items-center justify-between gap-2">
                   <button

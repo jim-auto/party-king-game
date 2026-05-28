@@ -12,7 +12,7 @@
 
 ## Player Avatar Sets
 
-1. `Set of eight diverse young adult party avatars, Japanese drinking party game, cyber Y2K outfits, neon rim lighting, friendly expressions, square icon portraits, no text, no logos`
+1. `Set of eight diverse young adult virtual cast avatars, Japanese king game simulator, cyber Y2K outfits, neon rim lighting, friendly expressions, square icon portraits, no text, no logos`
 
 2. `Cute sticker-style avatar sheet for mobile party game, laughing faces, surprised face, shy blush face, king crown face, cheering face, glossy neon stickers, black background, no words`
 

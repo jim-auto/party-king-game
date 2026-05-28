@@ -1,7 +1,7 @@
 {
   "name": "PARTY KING",
   "short_name": "PARTY KING",
-  "description": "飲み会でスマホを回して遊ぶネオン系王様ゲーム",
+  "description": "仮想メンバーと王様ゲームを体験できるネオン系シミュレーションゲーム",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",

@@ -2,7 +2,7 @@
 
 ## Mockups
 
-1. `High fidelity mobile game UI mockup for a Japanese drinking party king game, portrait screen, neon cyber party visual style, large tappable summon button, command card center, player chips, gacha reveal energy, TikTok-ready screenshot, no copyrighted logos`
+1. `High fidelity mobile game UI mockup for a Japanese king game experience simulator, portrait screen, neon cyber party visual style, large tappable summon button, command card center, virtual cast chips, gacha reveal energy, TikTok-ready screenshot, no copyrighted logos`
 
 2. `Mobile app UI kit, neon party game, icon buttons, crown, cocktail, dice, heart, lightning, rounded 8px corners, glossy black glass panels, magenta cyan gold lime accents, high contrast, no text except placeholder blocks`
 
