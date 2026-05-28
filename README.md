@@ -32,6 +32,7 @@ https://jim-auto.github.io/party-king-game/
 - 王様、対象プレイヤー、指令カードをランダム決定
 - ライト、盛り上げ、恋愛、ドキドキ、友情、深夜テンションのカテゴリ
 - ラウンド数、盛り上がりスコア、リアクション履歴
+- 条件達成で解放されるごほうびCGギャラリー
 - SSR / LEGEND / 深夜2時モード / グリッチ演出 / カオスモード
 - GitHub Pages対応の相対パスビルド
 - PWA化しやすいmanifestとservice workerの土台
@@ -45,6 +46,7 @@ https://jim-auto.github.io/party-king-game/
 - `public/assets/ai/party-king-host.png`
 - `public/assets/ai/command-card-sheet.png`
 - `public/assets/ai/effects-sticker-sheet.png`
+- `public/assets/ai/reward-*.png`
 
 アプリ上では軽量化したWebP版を優先して参照しています。PNGは元素材として残しています。
 
@@ -55,6 +57,7 @@ https://jim-auto.github.io/party-king-game/
 - `prompts/cards.md`
 - `prompts/ui.md`
 - `prompts/effects.md`
+- `prompts/rewards.md`
 
 Stable Diffusion、Midjourney、GPT Image系で使える英語プロンプトを入れているため、生成した素材を`public/assets/ai/`へ追加すれば、カードアートや背景を拡張できます。
 
@@ -153,7 +156,7 @@ npm run build
 - 生成AIによるその場の指令生成
 - NPCごとの性格、好感度、イベント分岐
 - プレイヤーごとの称号・勝手にランキング
-- カードごとの専用AIイラスト
+- カードごとの専用AIイラストと追加ごほうびCG
 - オフライン完全対応の強化
 - 画像素材のWebP最適化
 - SE実装とバイブレーション演出

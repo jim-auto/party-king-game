@@ -6,6 +6,12 @@ const ASSETS = [
   './assets/ai/neon-party-bg.webp',
   './assets/ai/party-king-host.webp',
   './assets/ai/command-card-sheet.webp',
+  './assets/ai/reward-vibe-clear.webp',
+  './assets/ai/reward-dokidoki-route.webp',
+  './assets/ai/reward-chaos-finale.webp',
+  './assets/ai/reward-friendship-afterglow.webp',
+  './assets/ai/reward-midnight-ending.webp',
+  './assets/ai/reward-king-spotlight.webp',
   './assets/ai/effects-sticker-sheet.png',
 ];
 

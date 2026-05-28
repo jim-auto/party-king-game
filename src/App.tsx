@@ -1,9 +1,10 @@
 import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
-import { Crown, Dice5, Flame, GlassWater, Heart, History, Save, Sparkles, Users, Volume2, VolumeX, Zap } from 'lucide-react';
+import { Crown, Dice5, Flame, Heart, Save, Sparkles, Users, Volume2, VolumeX, Zap } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { Particles } from './components/Particles';
 import { categories, commands, type CommandCard, type CommandCategory } from './data/commands';
+import { rewards } from './data/rewards';
 import { createPlayer, drawCommand, loadGame, normalizeCategories, pickOne, saveGame, type Player } from './lib';
 import { playSfx, vibrate } from './sound';
 
@@ -25,6 +26,10 @@ function App() {
   const [sfx, setSfx] = useState(restored?.sfx ?? true);
   const [round, setRound] = useState(restored?.round ?? 0);
   const [vibe, setVibe] = useState(restored?.vibe ?? 50);
+  const [kingSummons, setKingSummons] = useState(restored?.kingSummons ?? 0);
+  const [unlockedRewardIds, setUnlockedRewardIds] = useState<string[]>(restored?.unlockedRewardIds ?? []);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [rewardFlashId, setRewardFlashId] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>(queryDemoCard ? 'reveal' : 'ready');
   const [king, setKing] = useState<Player | null>(queryDemoCard ? (restored?.players[0] ?? defaultPlayers[0]) : null);
   const [target, setTarget] = useState<Player | null>(queryDemoCard ? (restored?.players[1] ?? defaultPlayers[1]) : null);
@@ -40,8 +45,18 @@ function App() {
   const isLateNight = new Date().getHours() >= 2 && new Date().getHours() < 5;
 
   useEffect(() => {
-    saveGame({ players, selectedCategories, chaos, drunk, sfx, round, vibe, recentCommandIds });
-  }, [players, selectedCategories, chaos, drunk, sfx, round, vibe, recentCommandIds]);
+    saveGame({ players, selectedCategories, chaos, drunk, sfx, round, vibe, kingSummons, unlockedRewardIds, recentCommandIds });
+  }, [players, selectedCategories, chaos, drunk, sfx, round, vibe, kingSummons, unlockedRewardIds, recentCommandIds]);
+
+  const unlockReward = (id: string) => {
+    setUnlockedRewardIds((current) => {
+      if (current.includes(id)) return current;
+      setRewardFlashId(id);
+      playSfx('legend', sfx);
+      vibrate([30, 30, 90]);
+      return [...current, id];
+    });
+  };
 
   const updatePlayer = (id: string, name: string) => {
     setPlayers((current) => current.map((player) => (player.id === id ? { ...player, name } : player)));
@@ -83,9 +98,14 @@ function App() {
     setCard(nextCard);
     setPhase('reveal');
     setRound((value) => value + 1);
+    setKingSummons((value) => value + 1);
     setBurstKey((value) => value + 1);
     setRecentCommandIds((current) => [nextCard.id, ...current.filter((id) => id !== nextCard.id)].slice(0, 18));
     setHistory((current) => [`R${round + 1}: ${nextKing.name}が王様 / ${nextCard.title}`, ...current].slice(0, 6));
+    if (nextCard.rarity === 'LEGEND') unlockReward('chaos-finale');
+    if (nextCard.category === 'ドキドキ' && nextCard.rarity === 'SSR') unlockReward('dokidoki-route');
+    if (round + 1 >= 10) unlockReward('midnight-ending');
+    if (kingSummons + 1 >= 5) unlockReward('king-spotlight');
   };
 
   const reactToCommand = (kind: 'play' | 'arrange' | 'pass') => {
@@ -96,6 +116,8 @@ function App() {
     vibrate(kind === 'play' ? [18, 20, 44] : 12);
     setVibe((value) => Math.max(0, Math.min(100, value + delta)));
     setHistory((current) => [`${label}: ${card.title}`, ...current].slice(0, 6));
+    if (kind === 'pass') unlockReward('friendship-afterglow');
+    if (vibe + delta >= 80) unlockReward('vibe-clear');
   };
 
   const rarityClass = card?.rarity === 'LEGEND' ? 'legend-card' : card?.rarity === 'SSR' ? 'ssr-card' : 'normal-card';
@@ -133,14 +155,16 @@ function App() {
             }}
             aria-label="グリッチ演出"
           >
-            <GlassWater size={20} />
+            <Sparkles size={20} />
           </button>
         </header>
 
         <section className="mt-4 grid grid-cols-3 gap-2 text-center">
           <StatusPill icon={<Crown size={15} />} label="KING" value={king?.name ?? '未定'} />
           <StatusPill icon={<Flame size={15} />} label="VIBE" value={`${vibe}%`} />
-          <StatusPill icon={<History size={15} />} label="ROUND" value={`${round}`} />
+          <button className="contents" onClick={() => setGalleryOpen(true)} aria-label="ごほうびCG">
+            <StatusPill icon={<Sparkles size={15} />} label="CG" value={`${unlockedRewardIds.length}/${rewards.length}`} />
+          </button>
         </section>
 
         <AnimatePresence mode="wait">
@@ -354,6 +378,14 @@ function App() {
           </div>
         )}
       </div>
+      <AnimatePresence>
+        {rewardFlashId && (
+          <RewardFlash id={rewardFlashId} onClose={() => setRewardFlashId(null)} />
+        )}
+        {galleryOpen && (
+          <RewardGallery unlockedIds={unlockedRewardIds} onClose={() => setGalleryOpen(false)} />
+        )}
+      </AnimatePresence>
     </main>
   );
 }
@@ -367,6 +399,53 @@ function StatusPill({ icon, label, value }: { icon: ReactNode; label: string; va
       </div>
       <div className="mt-1 truncate text-sm font-black">{value}</div>
     </div>
+  );
+}
+
+function RewardFlash({ id, onClose }: { id: string; onClose: () => void }) {
+  const reward = rewards.find((item) => item.id === id);
+  if (!reward) return null;
+  return (
+    <motion.div className="reward-modal" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+      <motion.div className="reward-card" initial={{ scale: 0.72, y: 40 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0 }}>
+        <img src={asset(reward.image)} alt="" />
+        <div>
+          <p>CG UNLOCKED</p>
+          <h2>{reward.title}</h2>
+          <span>{reward.condition}</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function RewardGallery({ unlockedIds, onClose }: { unlockedIds: string[]; onClose: () => void }) {
+  return (
+    <motion.div className="reward-modal" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <motion.section className="gallery-panel" initial={{ y: 80 }} animate={{ y: 0 }} exit={{ y: 80, opacity: 0 }}>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[10px] font-black tracking-[.28em] text-cyan-200">REWARD CG</p>
+            <h2 className="text-2xl font-black">ごほうびギャラリー</h2>
+          </div>
+          <button className="icon-button" onClick={onClose} aria-label="閉じる">×</button>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          {rewards.map((reward) => {
+            const unlocked = unlockedIds.includes(reward.id);
+            return (
+              <article key={reward.id} className={`gallery-item ${unlocked ? '' : 'locked'}`}>
+                <img src={asset(reward.image)} alt="" />
+                <div>
+                  <strong>{unlocked ? reward.title : 'LOCKED'}</strong>
+                  <span>{reward.condition}</span>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </motion.section>
+    </motion.div>
   );
 }
 

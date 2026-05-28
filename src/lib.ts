@@ -12,6 +12,8 @@ export type SavedGame = {
   sfx: boolean;
   round?: number;
   vibe?: number;
+  kingSummons?: number;
+  unlockedRewardIds?: string[];
   selectedCategories: CommandCategory[];
   recentCommandIds?: string[];
 };
