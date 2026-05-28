@@ -16,6 +16,13 @@ const ASSETS = [
   './assets/ai/reward-eye-lock.webp',
   './assets/ai/reward-neon-kabedon.webp',
   './assets/ai/reward-photobooth-secret.webp',
+  './assets/ai/reward-variety-pyramid.webp',
+  './assets/ai/reward-funny-face-battle.webp',
+  './assets/ai/reward-roulette-punishment.webp',
+  './assets/ai/reward-cheap-cosplay.webp',
+  './assets/ai/reward-synchro-fail.webp',
+  './assets/ai/reward-fake-press.webp',
+  './assets/ai/reward-crown-parade.webp',
   './assets/ai/effects-sticker-sheet.png',
 ];
 

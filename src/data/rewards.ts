@@ -66,4 +66,46 @@ export const rewards: Reward[] = [
     condition: 'リアクションを8回選ぶ',
     image: 'assets/ai/reward-photobooth-secret.webp',
   },
+  {
+    id: 'variety-pyramid',
+    title: 'VARIETY PYRAMID',
+    condition: '盛り上げSRを引く',
+    image: 'assets/ai/reward-variety-pyramid.webp',
+  },
+  {
+    id: 'funny-face-battle',
+    title: 'FUNNY FACE BATTLE',
+    condition: 'リアクションを3回選ぶ',
+    image: 'assets/ai/reward-funny-face-battle.webp',
+  },
+  {
+    id: 'roulette-punishment',
+    title: 'ROULETTE PUNISHMENT',
+    condition: 'カオス中に王様召喚',
+    image: 'assets/ai/reward-roulette-punishment.webp',
+  },
+  {
+    id: 'cheap-cosplay',
+    title: 'CHEAP COSPLAY',
+    condition: 'リアクションを5回選ぶ',
+    image: 'assets/ai/reward-cheap-cosplay.webp',
+  },
+  {
+    id: 'synchro-fail',
+    title: 'SYNCHRO FAIL',
+    condition: 'VIBE 70達成',
+    image: 'assets/ai/reward-synchro-fail.webp',
+  },
+  {
+    id: 'fake-press',
+    title: 'FAKE PRESS',
+    condition: 'パスを2回選ぶ',
+    image: 'assets/ai/reward-fake-press.webp',
+  },
+  {
+    id: 'crown-parade',
+    title: 'CROWN PARADE',
+    condition: '15ラウンド到達',
+    image: 'assets/ai/reward-crown-parade.webp',
+  },
 ];

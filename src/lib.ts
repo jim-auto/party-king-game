@@ -14,6 +14,7 @@ export type SavedGame = {
   vibe?: number;
   kingSummons?: number;
   reactions?: number;
+  passes?: number;
   unlockedRewardIds?: string[];
   selectedCategories: CommandCategory[];
   recentCommandIds?: string[];

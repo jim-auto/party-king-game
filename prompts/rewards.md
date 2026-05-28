@@ -24,6 +24,20 @@ Use these for unlockable reward CGs in the king game experience simulator. Keep 
 
 10. `Secret after-hours photo booth reward CG, two adult virtual cast members leaning into a selfie frame with the viewer avatar, playful wink, close shoulders, stylish covered fashion, neon Y2K photobooth, cheeky but safe, no nudity, no sexual content`
 
+11. `Chaotic adult female cast human pyramid challenge, shameless Japanese late-night variety show comedy, cheap neon TV studio, plastic crown props, LED panels, confetti cannon, fully clothed gyaru-inspired virtual cast laughing, vertical 9:16, not sexual`
+
+12. `Ridiculous funny face battle reward CG, cyber variety show studio, adult virtual cast doing intentionally ugly funny faces and exaggerated reactions, one host judging with a glowing king card, glossy mobile game CG, no nudity, no sexual content`
+
+13. `Penalty-game roulette reward CG, neon game show set with giant roulette wheel and toy crowns, adult virtual cast reacting dramatically to a ridiculous punishment result, cheap and loud late-night TV mood, fully clothed, no explicit content`
+
+14. `Cheap cosplay punishment reward CG, messy neon dressing room set, bargain-bin props, fake crowns, glitter curtain, adult virtual cast in fully covered ridiculous costumes, everyone laughing at the king card result, no nudity`
+
+15. `Synchronized pose contest fail reward CG, neon studio with taped floor marks and plastic throne, fully clothed adult female virtual cast attempting a ridiculous pose and failing, viewer avatar as king, lowbrow comedy, no sexual content`
+
+16. `Fake tabloid scandal press conference reward CG, neon press conference table, cheap microphones, plastic crowns, adult virtual cast dramatically apologizing for losing the king game while others act like fake reporters, absurd variety comedy, no readable text`
+
+17. `Giant novelty crown victory parade reward CG, small cheap TV studio runway, LED tape lights, cardboard throne, fully clothed adult female virtual cast wearing oversized crowns and capes, ridiculous parade, laughing, no explicit content`
+
 ## Negative Prompt Ideas
 
 `nudity, sexual act, minors, coercive pose, non-consensual mood, underwear focus, alcohol branding, readable text, logo, watermark, horror, violence, low resolution, dull colors`
