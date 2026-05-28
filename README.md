@@ -6,7 +6,7 @@
 
 GitHub Pages公開後にここへURLを入れます。
 
-`https://<your-account>.github.io/party-king-game/`
+https://jim-auto.github.io/party-king-game/
 
 ## Screenshot
 
