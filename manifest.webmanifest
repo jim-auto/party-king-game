@@ -1,0 +1,18 @@
+{
+  "name": "PARTY KING",
+  "short_name": "PARTY KING",
+  "description": "仮想メンバーと王様ゲームを体験できるネオン系シミュレーションゲーム",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0616",
+  "theme_color": "#0b0616",
+  "icons": [
+    {
+      "src": "./assets/ai/effects-sticker-sheet.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
